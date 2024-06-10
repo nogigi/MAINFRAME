@@ -1,0 +1,21 @@
+//* REMPLACER GG PAR VOTRE GROUPE ET GGUU PAR VOTRE USERID
+//ARIGGUUD  JOB 'DELDEF',CLASS=A,MSGCLASS=X,
+//          NOTIFY=&SYSUID,TIME=(0,30),COND=(8,LT)
+//DELDEF  EXEC PGM=IDCAMS
+//SYSPRINT DD  SYSOUT=*
+//SYSIN    DD  *
+   DELETE (ARIGG.ARIGGUU.FCPTE.KSDS)
+   IF MAXCC = 8 THEN SET MAXCC = 0
+   DEFINE CLUSTER (NAME(ARIGG.ARIGGUU.FCPTE.KSDS)          -
+                   VOLUME(WRK001)                          -
+                   TRACKS(3 1)                             -
+                   FREESPACE(20 20)                        -
+                   KEYS(10 0)                              -
+                   RECORDSIZE(50 50)                       -
+                   INDEXED)                                -
+          DATA    (NAME(ARIGG.ARIGGUU.FCPTE.KSDS.D))       -
+          INDEX   (NAME(ARIGG.ARIGGUU.FCPTE.KSDS.I))
+   REPRO INDATASET(ARIGG.ARIGGUU.FCPTE)                    -
+         OUTDATASET(ARIGG.ARIGGUU.FCPTE.KSDS)
+   PRINT INDATASET (ARIGG.ARIGGUU.FCPTE.KSDS)
+//

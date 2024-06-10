@@ -1,0 +1,27 @@
+//ARI0101E JOB (ACCT#),'ARIJTPE',MSGCLASS=H,CLASS=A,
+//         REGION=4M,MSGLEVEL=(1,1),NOTIFY=&SYSUID,TIME=(0,30)
+//*
+//* **************************************************************
+//* *                                                            *
+//* *                     ESTIAC INSTITUT                        *
+//* *                                                            *
+//* *           UNITE DE FORMATION COBOL PROGRAMMATION           *
+//* *                                                            *
+//* *   EXECUTION DU PROGRAMME ARIOTgu CORRESPONDANT AU TD N°1   *
+//* *                                                            *
+//* **************************************************************
+//STEPTPE  EXEC PGM=ARIOT11
+//* **************************************************************
+//* * DECLARATION DE LA BIBLIOTHEQUE QUI CONTIENT LE LOAD MODULE *
+//* **************************************************************
+//STEPLIB  DD  DSN=ARI01.ARI0101.LOAD,DISP=SHR
+//*
+//SYSPRINT DD  *
+//SYSABOUT DD  SYSOUT=*
+//SYSDBOUT DD  SYSOUT=*
+//SYSOUT   DD  SYSOUT=*,OUTLIM=800
+//* **************************************************************
+//* * DECLARATION DU FICHIER DES NOMBRES EN ENTREE               *
+//* **************************************************************
+//INP001   DD  DSN=ARI01.ARI0101.NBR,DISP=SHR
+//

@@ -1,0 +1,27 @@
+      *--------------------------------------------------------*
+      * DEFINITION DES ENREGISTREMENTS DE LA SYSIN   TAILLE 80 *
+      *--------------------------------------------------------*
+      *
+       01  WS-SYSIN.
+           05  WS-DEM-TYP                       PIC X.
+               88 A                             VALUE 'A'.
+               88 B                             VALUE 'B'.
+           05  FILLER                           PIC X(79).
+      *
+       01  WS-SYSIN-A REDEFINES WS-SYSIN.
+           05  FILLER                           PIC X.
+           05  WS-DEM-NOM                       PIC X(14).
+           05  WS-DEM-CPT-DEB                   PIC X(10).
+           05  WS-DEM-CPT-FIN                   PIC X(10).
+           05  FILLER                           PIC X(45).
+      *
+       01  WS-SYSIN-B REDEFINES WS-SYSIN.
+           05  FILLER                           PIC X.
+           05  FILLER                           PIC X(14).
+           05  WS-DEM-CLI-DEB                   PIC X(20).
+           05  WS-DEM-CLI-FIN                   PIC X(20).
+           05  FILLER                           PIC X(25).
+       01  WS-ENDSYSIN REDEFINES WS-SYSIN.
+           05  FILLER                           PIC X(3).
+               88 FIN-SYSIN                     VALUE '$$$'.
+           05  FILLER                           PIC X(77).

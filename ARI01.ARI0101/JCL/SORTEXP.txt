@@ -1,0 +1,55 @@
+//ARIGGUUA JOB (ACCT#),CLASS=A,MSGCLASS=X,
+//    MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//*
+//* ********************************************************************
+//*                                                                    *
+//*  EXEMPLE DE TRI AVEC UN SOMME SUR UNE DONN2E DANS UN FORMAT PACKE  *
+//*                                                                    *
+//* ********************************************************************
+//*
+//STEPSORT EXEC PGM=SORT
+//SORTIN   DD   DSN=ARIGG.ARIGGUU.FILE,DISP=(OLD,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTOUT  DD   DSN=ARIGG.ARIGGUU.FILETRI,DISP=(NEW,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTWK01 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SORTWK02 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SYSOUT   DD   SYSOUT=*
+//SYSIN    DD   *
+ SORT FIELDS=(5,8,CH,A)
+ SUM FIELDS=(18,3,PD)
+/*
+//*
+//* ********************************************************************
+//*                                                                    *
+//*  EXEMPLE DE FUSION DE 3 FICHIER                                    *
+//*                                                                    *
+//* ********************************************************************
+//*
+//STEPMERG EXEC PGM=SORT
+//SORTIN01 DD   DSN=ARIGG.ARIGGUU.FILE.CPT1,DISP=(OLD,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTIN02 DD   DSN=ARIGG.ARIGGUU.FILE.CPT2,DISP=(OLD,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTIN03 DD   DSN=ARIGG.ARIGGUU.FILE.CPT3,DISP=(OLD,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTOUT  DD   DSN=ARIGG.ARIGGUU.FILEMERG,DISP=(NEW,KEEP,DELETE),
+//              VOL=SER=WRK001,UNIT=3390,
+//              SPACE=(TRK(10,5)),
+//              DCB=(RECFM=FB,BLKSIZE=500,LRECL=50)
+//SORTWK01 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SORTWK02 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SYSOUT   DD   SYSOUT=*
+//SYSIN    DD   *
+ MERGE FIELDS=(5,7,CH,A)
+/*

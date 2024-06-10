@@ -1,0 +1,18 @@
+//ARI0101T JOB 'PGM TEST',MSGCLASS=H,REGION=4M,
+//    CLASS=A,MSGLEVEL=(1,1),NOTIFY=&SYSUID,
+//    COND=(4,LT)
+//*===================================================================*
+//*                    E S T I A C   I N S T I T U T                  *
+//*                                                                   *
+//*                      JCL D EXECUTION DU TEST 5                    *
+//*                                                                   *
+//*              AVANT D EXECUTER CE JOB VOUS DEVEZ MODIFIER          *
+//*                      LE NOM DU PROGRAMME A EXECUTE                *
+//*                                                                   *
+//*                                                                   *
+//*===================================================================*
+//*
+//STEP1    EXEC PGM=ARIT111,PARM='&SYSUID???'
+//STEPLIB  DD DSN=ARI01.ARI0101.LOAD,DISP=SHR
+//SYSOUT   DD SYSOUT=*
+//

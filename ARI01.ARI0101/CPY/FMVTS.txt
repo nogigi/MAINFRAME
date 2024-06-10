@@ -1,0 +1,32 @@
+      ******************************************************************
+      * DCLGEN TABLE(TMVTS)                                            *
+      *        LIBRARY(ARI01.ARI0101.CPY(FMVTS))                       *
+      *        ACTION(REPLACE)                                         *
+      *        LANGUAGE(COBOL)                                         *
+      *        QUOTE                                                   *
+      *        DBCSDELIM(NO)                                           *
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
+      ******************************************************************
+           EXEC SQL DECLARE TMVTS TABLE
+           ( IMVTS                          INTEGER NOT NULL,
+             NUMCPTE                        CHAR(10) NOT NULL,
+             DMVTS                          DATE NOT NULL,
+             CMVTS                          CHAR(1) NOT NULL,
+             MTMVTS                         DECIMAL(10, 2) NOT NULL
+           ) END-EXEC.
+      ******************************************************************
+      * COBOL DECLARATION FOR TABLE TMVTS                              *
+      ******************************************************************
+       01  DCLTMVTS.
+           10 IMVTS                PIC S9(9) USAGE COMP.
+           10 NUMCPTE              PIC X(10).
+           10 DMVTS                PIC X(10).
+           10 CMVTS                PIC X(1).
+              88 RETRAIT           VALUE 'R'.
+              88 CB                VALUE 'C'.
+              88 DEPOT             VALUE 'D'.
+              88 CLOTURE           VALUE 'K'.
+           10 MTMVTS               PIC S9(8)V9(2) USAGE COMP-3.
+      ******************************************************************
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 5       *
+      ******************************************************************

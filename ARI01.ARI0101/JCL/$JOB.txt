@@ -1,0 +1,4 @@
+//ARIGGUUJ JOB (ACCT#),'ARI00',COND=(0,NE),
+//         CLASS=A,MSGCLASS=H,NOTIFY=&SYSUID,
+//         RESTART=*
+//*-----------------------------------------------------

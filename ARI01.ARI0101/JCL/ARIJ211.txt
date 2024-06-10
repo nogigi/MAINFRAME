@@ -1,0 +1,53 @@
+//ARI0101E JOB (ACCT#),'ARIO211',MSGCLASS=H,CLASS=A,
+//             REGION=4M,MSGLEVEL=(1,1),NOTIFY=&SYSUID,TIME=(0,30)
+//*
+//* **************************************************************
+//* *                                                            *
+//* *                     ESTIAC INSTITUT                        *
+//* *                                                            *
+//* *           UNITE DE FORMATION COBOL PROGRAMMATION           *
+//* *                                                            *
+//* *   EXECUTION DU PROGRAMME ARIO2gu CORRESPONDANT AU TP N°2   *
+//* *                                                            *
+//* **************************************************************
+//* * HISTORIQUE MAJ :                                           *
+//* *    --> 02/11/21 | ETATCLI ET ETATANO SONT A DEFINIR.       *
+//* *            MSI  | ANCIEN FICHIER ARIJ2GU$.                 *
+//* **************************************************************
+//*
+//* **************************************************************
+//* * PREMIERE ETAPE : SUPPRESSION DES EVENTUELS FICHIERS CREES  *
+//* * PAR LE PROGRAMME PRINCIPAL                                 *
+//* **************************************************************
+//SUPETAT EXEC PGM=IEFBR14
+//FILE1    DD  DSN=ARI01.ARI0101.ETATCLI,UNIT=3390,
+//             VOL=SER=WRK001,DISP=(OLD,DELETE)
+//FILE2    DD  DSN=ARI01.ARI0101.ETATANO,UNIT=3390,
+//             VOL=SER=WRK001,DISP=(OLD,DELETE)
+//*
+//* **************************************************************
+//* *DEUXIEME ETAPE : EXECUTION DU PROGRAMME PRINCIPAL           *
+//* **************************************************************
+//STARIO2 EXEC PGM=ARIO211
+//SYSOUT   DD  SYSOUT=*,OUTLIM=800
+//* **************************************************************
+//* *DECLARATION DE LA BIBLIOTHEQUE QUI CONTIENT LE LOAD MODULE  *
+//* **************************************************************
+//STEPLIB  DD  DSN=ARI01.ARI0101.LOAD,DISP=SHR
+//* **************************************************************
+//* *DECLARATION DU FICHIER MOUVEMENT EN ENTREE                  *
+//* **************************************************************
+//INP001   DD  DSN=ARI01.ARI0101.FMVTS,DISP=SHR
+//* **************************************************************
+//* *IMPRESSION DES RELEVES : ETATCLI ET ETATANO                 *
+//* **************************************************************
+//*
+//* ECRIRE ICI LES CARTES CORRESPONDANT AUX FICHIERS D'IMPRESSION
+//ETATCLI DD DSN=ARI01.ARI0101.ETATCLI,DISP=(NEW,KEEP,DELETE),
+//           VOL=SER=WRK001,UNIT=3390,DCB=(LRECL=81,DSORG=PS,
+//           BLKSIZE=810,RECFM=FB),SPACE=(TRK,(2,1))
+//*
+//ETATANO DD DSN=ARI01.ARI0101.ETATANO,DISP=(NEW,KEEP,DELETE),
+//           VOL=SER=WRK001,UNIT=3390,DCB=(LRECL=81,DSORG=PS,
+//           BLKSIZE=810,RECFM=FB),SPACE=(TRK,(2,1))
+/*

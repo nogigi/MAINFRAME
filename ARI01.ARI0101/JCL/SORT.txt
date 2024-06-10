@@ -1,0 +1,23 @@
+//ARI0101A JOB (ACCT#),CLASS=A,MSGCLASS=X,
+//    MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//*
+//* ********************************************************************
+//*                                                                    *
+//*  EXEMPLE DE TRI                                                    *
+//*                                                                    *
+//* ********************************************************************
+//*
+//STEPSORT EXEC PGM=SORT
+//SORTIN   DD  DSN=ARI01.ARI0101.TP5.FCPTE,DISP=OLD
+//SORTOUT  DD  DSN=ARI01.ARI0101.DB2TP2.FCPTE,DISP=(NEW,CATLG,DELETE),
+//             VOL=SER=WRK001,UNIT=3390,
+//             SPACE=(TRK,(10,5)),
+//             DCB=(RECFM=FB,BLKSIZE=800,LRECL=80)
+//SORTWK01 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SORTWK02 DD   UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SYSOUT   DD   SYSOUT=*
+//SYSIN    DD   *
+ SORT FIELDS=(1,10,CH,A)
+ INREC BUILD=(1,28,C'-',29,2,C'-',31,2,33,10,ZD, -
+  EDIT=(STTTTTTTT.TT),SIGNS=(+,-),43,4,C'-',47,2,C'-',49,2)
+/*
